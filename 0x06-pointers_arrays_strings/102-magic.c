@@ -14,7 +14,6 @@ int main(void)
  * main - magic
  * - you are not allowed to use a
  * - you are not allowed to modify p
- * - only one statement 
  * - you are not alloweed to code anything else than this line of code
  */
 *(p + 5) = 98;
