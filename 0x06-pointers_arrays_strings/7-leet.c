@@ -8,20 +8,19 @@
  */
 char *leet(char *str)
 {
-	int indx1 = 0, indx2;
-	char leet[0] = {'O', 'L', '?', 'E', 'A', '?', '?', 'T'};
+	int i, j;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-	while (str[indx1])
+	for (i = 0; str[i] != '\0'; i++)
 	{
-		for (indx2 = 0; indx2 <= 7; indx2++)
+		for (j = 0; j < 10; j++)
 		{
-			if (str[indx1] == leet[indx2] ||
-			    str[indx2] - 32 == leet[indx2])
-				str[indx1] = indx2 + '0';
+			if (str[i] == s1[j])
+			{
+				str[i] = s2[j];
+			}
 		}
-
-		indx1++;
 	}
-
 	return (str);
 }
