@@ -12,7 +12,7 @@
  * of the 'n' variable. Finally, it prints the value of the
  * third element of the 'a' array, which is 1024.
  */
-int (void)
+int main(void)
 {
 int n;
 int a[5];
