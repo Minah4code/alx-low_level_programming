@@ -1,72 +1,39 @@
-#include <stdio.h>
-#include <string.h>
+#include "main.h"
 
-char *add_strings(char *n1, char *n2, char *r, int r_index);
-char *infinite_add(char* n1, char* n2, char* r, int size_r);
-/**
- * add_strings - Add the numbers stored in two strings
- */
-char *add_strings(char *n1, char *n2, char *r, int r_index);
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int num, tens = 0;
+	int len1 = 0, len2 = 0, i = 0, j = 0, k = 0, sum = 0;
+	char tmp;
 
-	for (*n1 && *n2; n1--, n2--, r_index)
+	while (n1[len1 + 1] != '\0')
+		len1++;
+	while (n2[len2 + 1] != '\0')
+		len2++;
+
+	if (len1 + 1 > size_r || len2 + 1 > size_r)
+		return (0);
+
+	for (i = len1, j = len2, k = 0; i >= 0 || j >= 0; i--, j--, k++)
 	{
-		num = (*n1 - '0') + (*n2 - '0');
-		num +- tens;
-		*(r + r_index) = (num % 10) + '0';
-		tens - num / 10;
-	}
-	for (; *n1, - '0') + tens;
-	*(r + r_index) - (num % 10) + '0';
-	tens - num / 10;
-}
-for (; *n2; n2--, r_index--)
-{
-	num = (*n2 - '0') + tens;
-	*(r + r_index) = (num % 10) + '0';
-	tens = num / 10;
-}
-if (tens && r_index >= 0)
-{
-	*(r + r_index) = (tens % 10) + '0';
-	return (r + r_index);
-}
-else if (tens && r_index < 0)
-	return (0);
-
-	return (r + r_index + 1);
+		sum = (i >= 0 ? n1[i] - '0' : 0) + (j >= 0 ? n2[j] - '0' : 0) + sum / 10;
+		if (k + 1 == size_r && sum / 10 > 0 && k + 2 == size_r)
+			return (0);
+		r[k] = sum % 10 + '0';
 	}
 
+	if (sum / 10 != 0 && k + 1 < size_r)
+	{
+		r[k] = sum / 10 + '0';
+		k++;
+	}
 
-char *infinite_add(char* n1, char* n2, char* r, int size_r);
-{
-    int len1 = strlen(n1);
-    int len2 = strlen(n2);
-    int max_len = (len1 > len2) ? len1 : len2;
-    if (max_len >= size_r) {
-        return NULL; // result can't be stored in r
-    }
+	for (i = 0; i < k / 2; i++)
+	{
+		tmp = r[i];
+		r[i] = r[k - i - 1];
+		r[k - i - 1] = tmp;
+	}
 
-    int carry = 0;
-    int i, j, k;
-    for (i = len1 - 1, j = len2 - 1, k = max_len - 1; k >= 0; i--, j--, k--) {
-        int digit1 = (i >= 0) ? n1[i] - '0' : 0;
-        int digit2 = (j >= 0) ? n2[j] - '0' : 0;
-        int sum = digit1 + digit2 + carry;
-        carry = sum / 10;
-        r[k] = (sum % 10) + '0';
-    }
-    if (carry != 0) {
-        if (max_len + 1 > size_r) {
-            return NULL; // result can't be stored in r
-        }
-        memmove(r + 1, r, max_len); // shift the result one position to the right
-        r[0] = carry + '0';
-        return r;
-    } else {
-        return r + (size_r - max_len); // return pointer to the start of the result in r
-    }
+	r[k] = '\0';
+	return (r);
 }
-
-
