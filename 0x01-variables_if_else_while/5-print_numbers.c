@@ -7,15 +7,14 @@
  * starting from 0, followed by new line.
  * Return: 0
  */
-int main(vooid)
+int main(void)
 {
-	char c = '0';
-
-	while (c <= '9')
-	{
-		putchar(c);
-		c++;
-	}
+       	int i;
+       
+	for (i = 0; i < 10; i++)
+	       	putchar(i + '0');
+       
 	putchar('\n');
+       
 	return (0);
 }
