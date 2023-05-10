@@ -1,52 +1,36 @@
-#include "main.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
  * is_palindrome - Checks if a string is a palindrome
- * @s: The string to be checked
- *
- * Return: 1 if the string is a palindrome, 0 otherwise
+ * @s: The string to check
+ * Return: 1 if string is a palindrome, 0 otherwise
  */
-
 int is_palindrome(char *s)
 {
-	int len = _strlen(s);
+	int len = strlen(s);
 
-	return (is_palindrome_helper(s, 0, len - 1));
-}
-
-/**
- * is_palindrome_helper - Recursive helper function to check if a string is a palindrome
- * @s: The string to be checked
- * @start: The starting index of the range to be checked
- * @end: The ending index of the range to be checked
- *
- * Return: 1 if the string is a palindrome, 0 otherwise
- */
-
-int is_palindrome_helper(char *s, int start, int end)
-{
-	if (start >= end)
+	if (len == 0 || len == 1)
 		return (1);
-	if (s[start] != s[end])
+	if (s[0] != s[len - 1])
 		return (0);
-	return (is_palindrome_helper(s, start + 1, end - 1));
+	s[len - 1] = '\0'; 
+
+	return (is_palindrome(s + 1));
 }
 
-/**
- * _strlen - Calculates the length of a string
- * @s: The string
- *
- * Return: The length of the string
- */
-
-int _strlen(char *s)
+int main(void)
 {
-	int len = 0;
+	int r;
+	
+	r = (is_palindrome("level"));
 
-	while (*s != '\0')
-	{
-		len++;
-		s++;
-	}
-	return (len);
+	printf("%d\n", r);
+	r = (is_palindrome("redder"));
+	printf("%d\n", r);
+	r = (is_palindrome("test"));
+	printf("%d\n", r);
+	r = (is_palindrome("step on no pets"));
+	printf("%d\n", r);
+	return (0);
 }
