@@ -1,8 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 
-int _sqrt(int n, int i)
-
 
 /**
  * sqrt_check - Recursive helper function to find the square root
@@ -14,18 +12,17 @@ int _sqrt(int n, int i)
  */
 int sqrt_check(int n, int start, int end)
 {
-    if (start > end)
-        return -1;
+	if (start > end)
+		return (-1);
+	int mid = (start + end) / 2;
+	long long square = (long long)mid * mid;
 
-    int mid = (start + end) / 2;
-    long long square = (long long)mid * mid;
-
-    if (square == n)
-        return mid;
-    else if (square > n)
-        return sqrt_check(n, start, mid - 1);
-    else
-        return sqrt_check(n, mid + 1, end);
+	if (square == n)
+		return (mid);
+	else if (square > n)
+		return (sqrt_check(n, start, mid - 1));
+	else
+		return (sqrt_check(n, mid + 1, end));
 }
 
 /**
@@ -36,7 +33,7 @@ int sqrt_check(int n, int start, int end)
  */
 int _sqrt_recursion(int n)
 {
-    if (n < 0)
-        return -1;
-    return sqrt_check(n, 0, n);
+	if (n < 0)
+		return (-1);
+	return (sqrt_check(n, 0, n));
 }
