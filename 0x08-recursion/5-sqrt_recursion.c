@@ -1,39 +1,39 @@
 #include "main.h"
 #include <stdio.h>
 
-
 /**
- * sqrt_check - Recursive helper function to find the square root
- * @n: The number to find the square root of
- * @start: The starting point for the search
- * @end: The ending point for the search
+ * _sqrt_recursion - returns the natural square root of a number
+ * @n: the number to calculate the square root of
  *
- * Return: The square root of n if found, otherwise -1
- */
-int sqrt_check(int n, int start, int end)
-{
-	if (start > end)
-		return (-1);
-	int mid = (start + end) / 2;
-	long long square = (long long)mid * mid;
-
-	if (square == n)
-		return (mid);
-	else if (square > n)
-		return (sqrt_check(n, start, mid - 1));
-	else
-		return (sqrt_check(n, mid + 1, end));
-}
-
-/**
- * _sqrt_recursion - Returns the natural square root of a number
- * @n: The number to find the square root of
- *
- * Return: The square root of n if found, otherwise -1
+ * Return: the natural square root of n,
+ * or -1 if n does not have a natural square root
  */
 int _sqrt_recursion(int n)
 {
 	if (n < 0)
+	{
 		return (-1);
-	return (sqrt_check(n, 0, n));
+	}
+	else if (n == 0 || n == 1)
+	{
+		return (n);
+	}
+	else
+	{
+		int i = 1;
+
+		while (i * i <= n)
+		{
+			i++;
+		}
+		i--;
+		if (i * i == n)
+		{
+			return (i);
+		}
+		else
+		{
+			return (-1);
+		}
+	}
 }
