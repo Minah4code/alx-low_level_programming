@@ -1,7 +1,4 @@
-c
-Copy code
 #include "main.h"
-#include <stdio.h>
 
 /**
  * _strlen - calculates the length of a string
@@ -42,6 +39,7 @@ int check_palindrome(char *s, int start, int end)
 int is_palindrome(char *s)
 {
 	int len = _strlen(s);
+	
 	if (len == 0 || len == 1)
 		return (1);
 	return (check_palindrome(s, 0, len - 1));
