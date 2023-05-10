@@ -1,6 +1,8 @@
 #include "main.h"
 #include <stdio.h>
 
+int _sqrt(int n, int i)
+
 /**
  * sqrt_helper - Recursive helper function to find the square root
  * @n: The number to find the square root of
