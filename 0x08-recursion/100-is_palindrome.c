@@ -15,7 +15,7 @@ int is_palindrome(char *s)
 }
 
 /**
- * is_palindrome_helper
+ * is_palindrome_helper - Recursive helper function to check if a string is a palindrome
  * @s: The string to be checked
  * @start: The starting index of the range to be checked
  * @end: The ending index of the range to be checked
