@@ -11,7 +11,7 @@ int word_count(char *str)
 {
 	int count = 0;
 	int i = 0;
-	
+
 	while (str[i])
 	{
 		if (str[i] != ' ' && (str[i + 1] == ' ' || str[i + 1] == '\0'))
@@ -33,19 +33,18 @@ char **strtow(char *str)
 	int word_index = 0;
 	int word_length = 0;
 	int i, j, k;
-	
+
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	
-	words = malloc(sizeof(char *) * (word_count(str) + 1));
+		words = malloc(sizeof(char *) * (word_count(str) + 1));
 	if (words == NULL)
 		return (NULL);
-	
-	for (i = 0; str[i]; i++)
+		for (i = 0; str[i]; i++)
 	{
 		if (str[i] != ' ')
 			word_length++;
-		if ((str[i] != ' ' && str[i + 1] == ' ') || (str[i] != ' ' && str[i + 1] == '\0'))
+		if ((str[i] != ' ' && str[i + 1] == ' ') ||
+				(str[i] != ' ' && str[i + 1] == '\0'))
 		{
 			words[word_index] = malloc(sizeof(char) * (word_length + 1));
 			if (words[word_index] == NULL)
@@ -65,6 +64,5 @@ char **strtow(char *str)
 		}
 	}
 	words[word_index] = NULL;
-	
 	return (words);
 }
