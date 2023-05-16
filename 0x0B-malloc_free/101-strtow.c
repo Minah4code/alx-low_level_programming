@@ -34,12 +34,16 @@ char **strtow(char *str)
 	int word_length = 0;
 	int i, j, k;
 
-	if (str == NULL || *str == '\0')
+	{
+		if (str == NULL || *str == '\0')
 		return (NULL);
 		words = malloc(sizeof(char *) * (word_count(str) + 1));
-	if (words == NULL)
+	}
+	{
+		if (words == NULL)
 		return (NULL);
-		for (i = 0; str[i]; i++)
+		for (i = 0; str[i]; i++);
+	}
 	{
 		if (str[i] != ' ')
 			word_length++;
