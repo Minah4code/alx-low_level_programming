@@ -9,6 +9,6 @@
  */
 void print_name_as_is(char *name)
 {
-	if(name && f)
+	if (name && f)
 		f(name);
 }
